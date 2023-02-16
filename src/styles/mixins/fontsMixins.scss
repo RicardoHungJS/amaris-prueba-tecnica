@@ -1,0 +1,15 @@
+@mixin robotoFont($fz: 18px, $fw: 500) {
+    font-family: Roboto, sans-serif;
+    font-size: $fz;
+    font-weight: $fw;
+};
+
+@mixin circularBold($fz: 18px) {
+    font-size: $fz;
+    font-family: 'circularBold', sans-serif;
+};
+
+@mixin circularRegular($fz: 18px) {
+    font-size: $fz;
+    font-family: 'CircularRegular', sans-serif;
+};

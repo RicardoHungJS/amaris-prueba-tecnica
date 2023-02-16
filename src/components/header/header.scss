@@ -1,0 +1,61 @@
+@import '../../styles/mixins/fontsMixins.scss';
+
+.header-component-container {
+    position: absolute;
+    width: 100%;
+    height: 100px;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: 10% 1fr 20%;
+    z-index: 11;
+
+    .logo-header {
+        height: 100%;
+        width: 100%;
+        grid-column: 1;
+    }
+
+    .header-button-box {
+        display: flex;
+        align-items: center;
+        padding-left: 100px;
+
+        p {
+            cursor: pointer;
+            margin: 0 20px;
+            text-align: center;
+            @include robotoFont(18px, 500);
+            color: #272D4E;
+        }
+    }
+
+
+    .singin-button-box {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 20px;
+
+        .login-button {
+            cursor: pointer;
+            border: none;
+            background: none;
+            @include robotoFont(18px, 500);
+        }
+
+        .started-button {
+            cursor: pointer;
+            width: 120px;
+            height: 47px;
+            background: #7854F7;
+            color: #ffffff;
+            @include robotoFont(18px, 500);
+            border: none;
+            border-radius: 5px;
+        }
+
+        .search-button {
+            cursor: pointer;
+        }
+    }
+}
