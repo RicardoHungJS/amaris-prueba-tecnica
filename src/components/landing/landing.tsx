@@ -1,5 +1,8 @@
 import { FC, useEffect, useState } from "react";
 import './landing.scss';
+import { BiChevronRight } from "react-icons/bi";
+
+
 import wVector from '../../assets/svg/wVector.svg';
 import landingImage from '../../assets/images/landingImage.png';
 
@@ -18,7 +21,7 @@ const LandingComponent: FC<IProps> = () => {
 					<div className="landing-info-buttons-box">
 						<button className="landing-info-start-new">Start a New Store</button>
 						<p className="or-text">or</p>
-						<p className="hyperlinkl">Customize & Extend</p>
+						<p className="hyperlinkl">Customize & Extend <BiChevronRight/></p>
 					</div>
 				</div>
 				<img className="landing-image" src={landingImage} alt="Landing information img" />

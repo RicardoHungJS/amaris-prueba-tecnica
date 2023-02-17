@@ -1,7 +1,7 @@
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
 import './header.scss';
 import logo from '../../assets/svg/logo.svg'
-import iconSearch from '../../assets/svg/icon-search.svg'
+import { FaSearch } from "react-icons/fa";
 
 interface IProps {
 }
@@ -21,7 +21,7 @@ const HeaderComponent: FC<IProps> = () => {
             <div className="singin-button-box">
                 <button className="login-button">Log In</button>
                 <button className="started-button">Get Started</button>
-                <img className="search-button" src={iconSearch} alt="" />
+                <FaSearch/>
             </div>
         </div>
     );
