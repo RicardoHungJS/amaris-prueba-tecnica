@@ -35,7 +35,7 @@
             line-height: 39px;
             background-color: $white;
             border-radius: 20px;
-            box-shadow: 0px 18px 52.8537px rgba(215, 228, 249, 0.5);
+            box-shadow: 0px 18px 52.8537px #d7e4f980;
             margin-bottom: 10%;
             display: flex;
             justify-content: center;
@@ -47,6 +47,12 @@
                 color: $lightGray;
                 position: relative;
                 z-index: 12;
+                opacity: 0;
+                transition: all 0.6s;
+
+                &.loaded {
+                    opacity: 1;
+                }
             }
 
             .quotes {
@@ -57,7 +63,7 @@
             }
         }
 
-        .arrowLeft {
+        @mixin arrowDimentions ($right) {
             cursor: pointer;
             width: 80px;
             height: 50px;
@@ -65,18 +71,24 @@
             position: absolute;
             z-index: 14;
             bottom: 21%;
-            right: 36%;
+            right: $right;
+            transition: all 0.3s
+        }
+
+        .arrowLeft {
+            @include arrowDimentions(36%);
+
+            &:hover {
+                transform: scale(1.1)
+            }
         }
 
         .arrowRight {
-            cursor: pointer;
-            width: 80px;
-            height: 50px;
-            object-fit: cover;
-            position: absolute;
-            z-index: 14;
-            bottom: 21%;
-            right: 32%;
+            @include arrowDimentions(32%);
+
+            &:hover {
+                transform: scale(1.1)
+            }
         }
 
         .bgCards {

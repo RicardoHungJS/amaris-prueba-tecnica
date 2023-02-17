@@ -58,6 +58,11 @@
                     color: $white;
                     font-size: 18px;
                     font-weight: 500;
+                    transition: all 0.3s;
+
+                    &:hover {
+                        filter: brightness(1.2);
+                    }
                 }
 
                 .or-text {

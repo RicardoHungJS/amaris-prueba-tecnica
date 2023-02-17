@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import './testimonials.scss';
 
 import bgCards from '../../assets/svg/backgroundCards.svg'
@@ -13,7 +13,6 @@ import { HiOutlineArrowNarrowRight } from "react-icons/hi";
 interface IProps {
 }
 
-
 const TestimonialsComponent: FC<IProps> = () => {
     const texts: Array<string> = [
         "No other eCommerce platform allows people to start for free and grow their store as their business grows. More importantly, WooCommerce doesn't charge you a portion of your profits as your business grows!",
@@ -21,15 +20,32 @@ const TestimonialsComponent: FC<IProps> = () => {
         "Vestibulum varius rhoncus purus, sed iaculis ante aliquam sed. Integer ante metus, fringilla ac est sit amet, egestas vehicula sapien. Ut ultrices arcu eu ante porttitor."
     ]
 
-    const [selectedIndex, setSelectedIndex] = useState(0);
-    const [selectedText, setSelectedText] = useState(texts[0]);
+    const [selectedIndex, setSelectedIndex] = useState<number>(0);
+    const [selectedText, setSelectedText] = useState<string>(texts[0]);
+
+    const [loaded, setloaded] = useState<boolean>(false)
+
+    useEffect(() => {
+        changeLoadedValue();
+    })
+
 
     const selectNewImage = (texts: string[], next = true) => {
-        const condition = next ? selectedIndex < texts.length - 1 : selectedIndex > 0;
-        const nextIndex = next ? (condition ? selectedIndex + 1 : 0) : condition ? selectedIndex - 1 : texts.length - 1;
-        setSelectedText(texts[nextIndex]);
-        setSelectedIndex(nextIndex);
+        setloaded(false)
+        changeLoadedValue();
+        setTimeout(() => {
+            const condition = next ? selectedIndex < texts.length - 1 : selectedIndex > 0;
+            const nextIndex = next ? (condition ? selectedIndex + 1 : 0) : condition ? selectedIndex - 1 : texts.length - 1;
+            setSelectedText(texts[nextIndex]);
+            setSelectedIndex(nextIndex);
+        }, 400);
     };
+
+    const changeLoadedValue = () => {
+        setTimeout(() => {
+            setloaded(true)
+        }, 400);
+    }
 
     const previous = () => {
         selectNewImage(texts, false);
@@ -44,7 +60,7 @@ const TestimonialsComponent: FC<IProps> = () => {
             <h2 className="testimonials-title">Trusted by Agencies <br /> & Store Owners</h2>
             <div className="slider-box">
                 <div className="slider-white-container">
-                    <p className="card-text">{selectedText}</p>
+                    <p className={loaded ? "card-text loaded" : "card-text"}>{selectedText}</p>
                     <img className="quotes" src={quotes} alt="card watermark" />
                 </div>
                 <img className="bgCards" src={bgCards} alt="background cards" />
